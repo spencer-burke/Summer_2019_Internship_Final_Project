@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1 style='text-align:center;'><mark>Smart Backpack</mark></h1>
+        <button id="10" class="button">Toggle Cooling On</button>
+        <button id="11" class="button">Toggle Cooling Off</button>
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+               $(".button").click(function () {
+                    var p = $(this).attr('id'); // get id value
+                    // send HTTP GET request to the IP address with the parameter "pin" and value "p", then execute
+                    $.get("http://192.168.4.1:80", { "pin": p }); // execute get request
+                });
+            });
+        </script>
+        <p>Temperature in FAHRENHEIT: {EXAMPLE FAHRENHEIT} </p>
+        <p>Backpack: {ABSENT} </p>
+    </body>
+</html>
+<!--
+                //sends an HTTP get request with the right information to activate the peltier plate cooling system
+            function activatePeltier() {
+                var Http = new XMLHttpRequest();
+                var url = 'http://192.168.4.1:80?pin=10';
+                Http.open("GET", url);
+                Http.send();
+                Http.onreadystatechange = (e) => {
+                    console.log(Http.responseText)
+                }
+            }
+            //sends an HTTP get request with the right information to deactivate the peltier plate cooling system
+            function deactivatePeltier() {
+                var Http = new XMLHttpRequest();
+                var url = 'http://192.168.4.1:80?pin=11';
+                Http.open("GET", url);
+                Http.send();
+                Http.onreadystatechange = (e) => {
+                    console.log(Http.responseText)
+                }  
+            }
+-->
